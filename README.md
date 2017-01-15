@@ -13,6 +13,7 @@ You will use this ISO image later with VMWare.
 To automate the install, you will use a preseed file. This preseed file is containing the main settings to install all the requirement of the continuous integration server. The only steps you will have to do will be to select the partition and to set the boot sector. You can download the preseed here:
 * [Preseed to have the install in french with a french keyboard](https://github.com/stefv/My-Home-Server/blob/develop/develop/preseed.fr.cfg),
 * TODO English preseed file
+
 Copy this preseed file to the root of your USB drive.
 ## Create a virtual machine
 In VMWare and create a virtual machine. Allocate 5GiB for the disk space to store the operating system. In the virtual CD/DVD Rom, select the ISO downloaded earlier. In the removable devices, select your USB drive.
