@@ -5,7 +5,7 @@ If you want to develop this project, maybe you will need to create your continuo
 To test this continuous integration, you can use a virtual machine (like VMWare Workstation). You will need to use an USB drive to store the preseed file.
 ## Install the virtual machine
 I tested this continuous integration with a virtual machine. The virtual machine I used is [VMWare Worstation Player](http://www.vmware.com/products/player/playerpro-evaluation.html) free for non commercial use. If you want to use it with you own physical server, beware because this documentation will show the way using the entire disk space.
-Start to download __VMWare Workstation Player__ and install it your computer.
+Start to download __VMWare Workstation Player__ and install it on your computer.
 ## Download GNU/Linux Debian
 To install the continuous integration, you will need the first ISO of the DVD of the install for GNU/Linux Debian Jessie (version 8.x). You can download it here (use the closest mirror): [Download the CD or DVD](https://www.debian.org/CD/http-ftp/#stable)
 You will use this ISO image later with VMWare.
