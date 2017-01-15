@@ -1,7 +1,7 @@
 # My Home Server
 My Home Server is an operating system based on Linux with a user friendly user interface to install, configure et manage extensions like NAS, Web Server, FTP.
 # Continuous integration
-If you want to develop this project, maybe you will need to create your continuous integration server. Because _My Home Server_ is using GNU/Linux Debian as a base, the continous integration is using GNU/Linux Debian. To install this continuous integration, you need to have an access to internet to download the dependances. If you need to use a proxy, you will need to add some settings at the boot start of the install.
+If you want to develop this project, maybe you will need to create your continuous integration server to create your ISO file to install _My Home Server_. Because _My Home Server_ is using GNU/Linux Debian as a base, the continous integration is using GNU/Linux Debian. To install this continuous integration, you need to have an access to internet to download the dependances. If you need to use a proxy, you will need to add some settings at the boot start of the install.
 To test this continuous integration, you can use a virtual machine (like VMWare Workstation). You will need to use an USB drive to store the preseed file.
 ## Install the virtual machine
 I tested this continuous integration with a virtual machine. The virtual machine I used is [VMWare Worstation Player](http://www.vmware.com/products/player/playerpro-evaluation.html) free for non commercial use. If you want to use it with you own physical server, beware because this documentation will show the way using the entire disk space.
