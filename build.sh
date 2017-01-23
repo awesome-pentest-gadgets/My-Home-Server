@@ -3,6 +3,11 @@
 # Update time
 sudo /etc/init.d/ntp restart
 
+# If the install directory is present, remove it
+if [ -d install/ ]; then
+	sudo rm -rf install/
+fi
+
 # Create the directory
 sudo rm -rf install/
 mkdir install/
@@ -27,10 +32,7 @@ cp ../config/mhs-install.list.chroot ./config/package-lists/
 sudo mkdir ./config/includes.chroot/opt
 sudo cp -R ../webapp-install/ ./config/includes.chroot/opt/
 
-exit 0
-
-#cp ../live-config/hooks/0900-create-webapp.hook.binary config/hooks/
-cp ../live-config/hooks/0900-create-webapp.hook.chroot config/hooks/
+cp ../config/hooks/0900-create-webapp.hook.chroot config/hooks/
 
 # Build the live Debian
 sudo lb build --verbose
