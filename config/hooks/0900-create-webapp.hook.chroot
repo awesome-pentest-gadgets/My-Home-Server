@@ -1,0 +1,16 @@
+#!/bin/sh
+
+echo "Preparing WEBAPP" 
+pwd
+echo "Before removing"
+ls -la /var/lib/tomcat8/webapps/ROOT
+sudo rm -rf /var/lib/tomcat8/webapps/ROOT
+#sudo mv /opt/ROOT /var/lib/tomcat8/webapps/
+sudo ln -s /opt/webapp-install /var/lib/tomcat8/webapps/ROOT
+echo "After copy"
+ls -al /var/lib/tomcat8/webapps/ROOT
+echo "WEBAPP done !"
+
+sleep 1m
+
+exit 0
