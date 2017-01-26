@@ -32,10 +32,14 @@ cp ../config/mhs-install.list.chroot ./config/package-lists/
 sudo mkdir ./config/includes.chroot/opt
 sudo cp -R ../webapp-install/ ./config/includes.chroot/opt/
 
+# Prepare the boot menu to start immediatly
+cp -R ../config/isolinux ./config/includes.binary/
+
+# Copie the install webapp
 cp ../config/hooks/0900-create-webapp.hook.chroot config/hooks/
 
 # Build the live Debian
-sudo lb build --verbose
+sudo lb build --verbose > ../logs/build.log
 
 # Move the ISO to the NAS directory
 rm -rf ../*.iso
