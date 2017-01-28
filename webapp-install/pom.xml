@@ -21,19 +21,19 @@
 			<scope>test</scope>
 		</dependency>
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>javax.servlet</groupId> -->
-<!-- 			<artifactId>javax.servlet-api</artifactId> -->
-<!-- 			<version>3.1.0</version> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>javax.servlet</groupId> -->
+		<!-- <artifactId>javax.servlet-api</artifactId> -->
+		<!-- <version>3.1.0</version> -->
+		<!-- </dependency> -->
 
 
-	<dependency>
-		<groupId>javax</groupId>
-		<artifactId>javaee-api</artifactId>
-		<version>7.0</version>
-		<scope>provided</scope>
-	</dependency>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
 
 	</dependencies>
 
@@ -56,50 +56,39 @@
 				<artifactId>frontend-maven-plugin</artifactId>
 				<!-- Use the latest released version: https://repo1.maven.org/maven2/com/github/eirslett/frontend-maven-plugin/ -->
 				<version>1.3</version>
-
 				<executions>
 					<execution>
-						<!-- optional: you don't really need execution ids, but it looks nice 
-							in your build log. -->
+						<!-- optional: you don't really need execution ids, but it looks nice in your build log. -->
 						<id>install node and npm</id>
 						<goals>
 							<goal>install-node-and-npm</goal>
 						</goals>
 						<!-- optional: default phase is "generate-resources" -->
 						<phase>generate-resources</phase>
-
 						<configuration>
 							<workingDirectory>target/node</workingDirectory>
 						</configuration>
 					</execution>
-
 					<execution>
 						<id>npm install less</id>
 						<goals>
 							<goal>npm</goal>
 						</goals>
-
 						<!-- optional: default phase is "generate-resources" -->
 						<phase>generate-resources</phase>
-
 						<configuration>
 							<workingDirectory>target/node</workingDirectory>
-							<!-- optional: The default argument is actually "install", so unless 
-								you need to run some other npm command, you can remove this whole <configuration> 
-								section. -->
+							<!-- optional: The default argument is actually "install", so unless you need to run some other npm command, you can remove this whole 
+								<configuration> section. -->
 							<arguments>install less</arguments>
 						</configuration>
 					</execution>
 				</executions>
 				<configuration>
 					<installDirectory>target</installDirectory>
-
 					<nodeVersion>v4.6.0</nodeVersion>
-
-					<!-- optional: with node version greater than 4.0.0 will use npm provided 
-						by node distribution -->
+					<!-- optional: with node version greater than 4.0.0 will use npm provided by node distribution -->
 					<npmVersion>2.15.9</npmVersion>
-
 					<!-- optional: where to download node and npm from. Defaults to https://nodejs.org/dist/ -->
 					<!-- <downloadRoot>http://myproxy.example.org/nodejs/</downloadRoot> -->
 				</configuration>
