@@ -39,7 +39,7 @@ cp -R ../config/isolinux ./config/includes.binary/
 cp ../config/hooks/0900-create-webapp.hook.chroot config/hooks/
 
 # Build the live Debian
-sudo lb build --verbose > ../logs/build.log
+sudo lb build --verbose
 
 # Move the ISO to the NAS directory
 rm -rf ../*.iso
