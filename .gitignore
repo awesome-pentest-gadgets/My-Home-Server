@@ -3,6 +3,8 @@
 install/
 logs/
 
+apache-maven-*
+
 # Eclipse
 .metadata/
 Servers/
