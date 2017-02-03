@@ -1,3 +1,0 @@
-NAME="fd0" VENDOR="" MODEL="" TYPE="disk" SERIAL="" SIZE="" FSTYPE="" MAJ:MIN="2:0" LABEL="" ROTA="1"
-NAME="sda" VENDOR="Msft    " MODEL="Virtual Disk    " TYPE="disk" SERIAL="" SIZE="5368709120" FSTYPE="" MAJ:MIN="8:0" LABEL="" ROTA="1"
-NAME="sr0" VENDOR="Msft    " MODEL="Virtual CD/ROM  " TYPE="rom" SERIAL="" SIZE="1073741312" FSTYPE="" MAJ:MIN="11:0" LABEL="" ROTA="1"
