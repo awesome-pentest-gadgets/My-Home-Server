@@ -1,10 +1,10 @@
-import { SbadminNg2Page } from './app.po';
+import { InstallClient2Page } from './app.po';
 
-describe('sbadmin-ng2 App', function() {
-  let page: SbadminNg2Page;
+describe('install-client2 App', function() {
+  let page: InstallClient2Page;
 
   beforeEach(() => {
-    page = new SbadminNg2Page();
+    page = new InstallClient2Page();
   });
 
   it('should display message saying app works', () => {

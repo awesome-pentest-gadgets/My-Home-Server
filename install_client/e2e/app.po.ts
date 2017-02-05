@@ -1,6 +1,6 @@
-import { browser, element, by } from 'protractor/globals';
+import { browser, element, by } from 'protractor';
 
-export class SbadminNg2Page {
+export class InstallClient2Page {
   navigateTo() {
     return browser.get('/');
   }
