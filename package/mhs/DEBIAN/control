@@ -1,10 +1,10 @@
-Package: My-Home-Server
+Package: mhs
 Version: 0.0.1-alpha1
 Section: admin
 Priority: optional
 Architecture: any
 Depends: iptables (>= 1.4.21-2)
-Suggests: My-Home-Server-doc
+Suggests: mhs-doc
 Installed-Size: 0
 Maintainer: stefv <svanpo@gmail.com>
 Description: This is a server easy to use with a web 
