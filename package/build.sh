@@ -1,26 +1,6 @@
 #!/bin/bash
 
-# Create the target directory
-if [ ! -d "target" ]; then
-        mkdir target
-fi
-
-# Create the data.tar.gz file
-if [ ! -d "data" ]; then
-        mkdir data
-fi
-cd data
-tar -cvzf ../target/data.tar.gz * &>/dev/null
-cd ..
-
-# Create the debian-binary file
-if [ ! -a target/debian-binary ]; then
-	printf "2.0\n" > target/debian-binary
-fi
-
-# Create the control.tar.gz file
-cd control
-tar -cvzf ../target/control.tar.gz *
-cd ..
+# Create the package
+dpkg-deb --build mhs mhs-0.0.1-alpha1_armhf.deb
 
 exit 0
