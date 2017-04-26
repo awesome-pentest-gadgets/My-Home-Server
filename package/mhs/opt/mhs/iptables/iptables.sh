@@ -1,6 +1,6 @@
 #!/bin/bash
 
-iptables –F INPUT
+iptables -F INPUT
 iptables -I INPUT --dport 22 -j ACCEPT
 iptables -P INPUT DROP
 
