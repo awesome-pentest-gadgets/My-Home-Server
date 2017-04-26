@@ -1,7 +1,7 @@
 #!/bin/bash
 
 iptables -F INPUT
-iptables -I INPUT --dport 22 -j ACCEPT
+iptables -A INPUT -p tcp --dport ssh -j ACCEPT
 iptables -P INPUT DROP
 
 iptables -N LOG_DROP
