@@ -11,6 +11,8 @@ iptables -A INPUT -p tcp --dport ssh -j ACCEPT
 
 iptables -A INPUT -p tcp --dport https -j ACCEPT
 iptables -A INPUT -p tcp --sport https -j ACCEPT
+iptables -A INPUT -p tcp --dport http -j ACCEPT
+iptables -A INPUT -p tcp --sport http -j ACCEPT
 
 # Accept the DNS requests
 iptables -A INPUT --protocol udp --source-port domain -j ACCEPT
