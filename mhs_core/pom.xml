@@ -58,9 +58,9 @@
 
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.1.1</version>
+				<version>2.2</version>
 				<configuration>
-					<warName>${project.artifactId}-${project.version}</warName>
+					<warName>core</warName>
 					<archive>
 						<manifest>
 							<mainClass>mhs.core.Server</mainClass>
@@ -104,10 +104,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.3</version>
+				<version>3.0.0</version>
 				<executions>
 					<execution>
-						<id>jetty-classpath</id>
+						<id>classpath</id>
 						<phase>prepare-package</phase>
 						<goals>
 							<goal>unpack-dependencies</goal>
@@ -115,7 +115,7 @@
 						<configuration>
 							<includeGroupIds>org.apache.tomcat.embed</includeGroupIds>
 							<!-- <excludeArtifactIds>jsp-api,jstl</excludeArtifactIds> -->
-							<excludes>META-INF/ECLIPSEF.*</excludes>
+<!-- 							<excludes>META-INF/ECLIPSEF.*</excludes> -->
 							<outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}</outputDirectory>
 						</configuration>
 					</execution>
