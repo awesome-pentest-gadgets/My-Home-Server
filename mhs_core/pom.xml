@@ -13,7 +13,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<version.tomcat>7.0.70</version.tomcat>
+		<version.tomcat>8.5.14</version.tomcat>
 	</properties>
 
 	<dependencies>
@@ -28,11 +28,11 @@
 			<artifactId>tomcat-embed-core</artifactId>
 			<version>${version.tomcat}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-logging-juli</artifactId>
-			<version>${version.tomcat}</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.tomcat.embed</groupId> -->
+<!-- 			<artifactId>tomcat-embed-logging-juli</artifactId> -->
+<!-- 			<version>${version.tomcat}</version> -->
+<!-- 		</dependency> -->
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -57,28 +57,71 @@
 			</plugin>
 
 			<plugin>
-				<!-- http://tomcat.apache.org/maven-plugin-trunk/executable-war-jar.html -->
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.1</version>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<warName>${project.artifactId}-${project.version}</warName>
+					<archive>
+						<manifest>
+							<mainClass>mhs.core.Server</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
 				<executions>
 					<execution>
-						<id>tomcat-run</id>
-						<goals>
-							<goal>exec-war-only</goal>
-						</goals>
+						<id>default-war</id>
 						<phase>package</phase>
+						<goals>
+							<goal>war</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>main-class-placement</id>
+						<phase>prepare-package</phase>
 						<configuration>
-<!-- 							<path>mhs</path> -->
-							<!-- optional, needed only if you want to use a preconfigured server.xml file -->
-							<!-- <serverXml>src/main/tomcatconf/server.xml</serverXml> -->
-							<!-- optional values which can be configurable -->
-							<!-- <attachArtifactClassifier>default value is exec-war but you can customize</attachArtifactClassifier> -->
-							<!-- <attachArtifactClassifierType>default value is jar</attachArtifactClassifierType> -->
+							<tasks>
+								<move
+									todir="${project.build.directory}/${project.artifactId}-${project.version}/">
+									<fileset dir="${project.build.directory}/classes/">
+										<include name="mhs/core/Server.class" />
+									</fileset>
+								</move>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.3</version>
+				<executions>
+					<execution>
+						<id>jetty-classpath</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>unpack-dependencies</goal>
+						</goals>
+						<configuration>
+							<includeGroupIds>org.apache.tomcat.embed</includeGroupIds>
+							<!-- <excludeArtifactIds>jsp-api,jstl</excludeArtifactIds> -->
+							<excludes>META-INF/ECLIPSEF.*</excludes>
+							<outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
+
 		</plugins>
 	</build>
 </project>
