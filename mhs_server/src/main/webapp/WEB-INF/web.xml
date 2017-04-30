@@ -3,4 +3,15 @@
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
 
 	<display-name>Archetype Created Web Application</display-name>
+	
+<!-- 	<filter> -->
+<!-- 		<filter-name>HttpAccessFilter</filter-name> -->
+<!-- 		<filter-class>mhs.server.filters.HttpAccessFilter</filter-class> -->
+<!-- 		<init-param> -->
+<!-- 			<description>Granted directoies</description> -->
+<!-- 			<param-name>granted-dir</param-name> -->
+<!-- 			<param-value></param-value> -->
+<!-- 		</init-param> -->
+<!-- 	</filter> -->
+	
 </web-app>
