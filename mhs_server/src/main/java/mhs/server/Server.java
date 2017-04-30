@@ -17,6 +17,11 @@ import org.apache.tomcat.util.http.fileupload.FileUtils;
 public class Server {
 
     /**
+     * Default port.
+     */
+    private static final int PORT = 8080;
+
+    /**
      * The main method of the server.
      * 
      * @param args Arguments.
@@ -58,8 +63,17 @@ public class Server {
             throw new RuntimeException("Not a valid archive to start the embedded server.");
         }
 
+        // Remove the compile directory
+        final File compileDir = new File("./tomcat." + PORT);
+        if (compileDir.exists()) {
+            FileUtils.forceDelete(compileDir);
+        }
+
+        // Create a compile directory
+        compileDir.mkdir();
+
         // If a previous webapps directory exist, remove it to have a clean install
-        final File webappsDir = new File("./webapps");
+        final File webappsDir = new File(compileDir, "./webapps");
         if (webappsDir.exists()) {
             FileUtils.forceDelete(webappsDir);
         }
