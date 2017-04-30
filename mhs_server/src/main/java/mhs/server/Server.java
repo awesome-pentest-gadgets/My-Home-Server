@@ -3,7 +3,6 @@ package mhs.server;
 import java.io.File;
 import java.net.URL;
 
-import org.apache.catalina.LifecycleException;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.startup.Tomcat;
@@ -22,23 +21,43 @@ public class Server {
     private static final int PORT = 8080;
 
     /**
+     * Port of the server.
+     */
+    private int port = PORT;
+
+    /**
      * The main method of the server.
      * 
      * @param args Arguments.
      * @throws Exception
-     * @throws LifecycleException
      */
     public static void main(final String[] args) throws Exception {
         final Server server = new Server();
-        server.startTomcat();
+        server.startTomcat(args);
+    }
+
+    /**
+     * Parse the arguments.
+     * 
+     * @param args The arguments.
+     */
+    private void parseArguments(final String[] args) {
+        for (String arg : args) {
+            if (arg.startsWith("--port=")) {
+                port = Integer.parseInt(arg.substring("--port=".length()).trim());
+            }
+        }
     }
 
     /**
      * Start the Tomcat server.
      * 
+     * @param args Arguments.
      * @throws Exception Exception.
      */
-    private void startTomcat() throws Exception {
+    private void startTomcat(final String[] args) throws Exception {
+
+        parseArguments(args);
 
         final Tomcat tomcat = new Tomcat();
         final String webappDirLocation;
@@ -64,7 +83,7 @@ public class Server {
         }
 
         // Remove the compile directory
-        final File compileDir = new File("./tomcat." + PORT);
+        final File compileDir = new File("./tomcat." + port);
         if (compileDir.exists()) {
             FileUtils.forceDelete(compileDir);
         }
@@ -83,7 +102,7 @@ public class Server {
 
         // Start the server
         tomcat.setBaseDir("./");
-
+        tomcat.setPort(port);
         tomcat.start();
         tomcat.getServer().await();
     }

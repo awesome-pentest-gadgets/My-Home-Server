@@ -21,12 +21,14 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author svanp
  * @version $Id$
  */
-@WebFilter(urlPatterns = { "/*" })
+@WebFilter(filterName = "HttpAccessFilter", urlPatterns = { "/*" })
 public class HttpAccessFilter implements Filter {
 
     /*
@@ -45,8 +47,15 @@ public class HttpAccessFilter implements Filter {
     public void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain chain)
             throws IOException, ServletException {
 
-        chain.doFilter(request, response);
+        if (request instanceof HttpServletRequest) {
+            HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+            if (httpServletRequest.getRequestURI().endsWith(".class") || httpServletRequest.getRequestURI().endsWith(".properties")) {
+                ((HttpServletResponse) response).setStatus(404);
+            }
+            // System.out.println(httpServletRequest.getRequestURI());
+        }
 
+        chain.doFilter(request, response);
     }
 
     /*
