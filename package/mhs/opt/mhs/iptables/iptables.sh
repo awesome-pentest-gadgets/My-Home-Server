@@ -14,6 +14,10 @@ iptables -A INPUT -p tcp --sport https -j ACCEPT
 iptables -A INPUT -p tcp --dport http -j ACCEPT
 iptables -A INPUT -p tcp --sport http -j ACCEPT
 
+# Accept the acces to the administration server
+iptables -A INPUT -p tcp --dport 5000 -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 5000 -j ACCEPT
+
 # Accept the DNS requests
 iptables -A INPUT --protocol udp --source-port domain -j ACCEPT
 iptables -A OUTPUT --protocol udp --destination-port domain -j ACCEPT
