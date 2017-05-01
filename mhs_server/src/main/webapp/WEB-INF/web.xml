@@ -4,4 +4,11 @@
 
 	<display-name>Archetype Created Web Application</display-name>
 
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/errors/error404.html</location>
+	</error-page>
+	<error-page>
+		<location>/WEB-INF/errors/error500.html</location>
+	</error-page>
 </web-app>

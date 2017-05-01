@@ -52,7 +52,6 @@ public class HttpAccessFilter implements Filter {
             if (httpServletRequest.getRequestURI().endsWith(".class") || httpServletRequest.getRequestURI().endsWith(".properties")) {
                 ((HttpServletResponse) response).setStatus(404);
             }
-            // System.out.println(httpServletRequest.getRequestURI());
         }
 
         chain.doFilter(request, response);
