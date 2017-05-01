@@ -24,6 +24,12 @@ iptables -A OUTPUT --protocol udp --destination-port domain -j ACCEPT
 iptables -A INPUT --protocol tcp --source-port domain -j ACCEPT
 iptables -A OUTPUT --protocol tcp --destination-port domain -j ACCEPT
 
+# Reject some bad IP (trying to login)
+iptables -A INPUT --protocol udp -s 61.177.172.60/24 -j REJECT
+iptables -A INPUT --protocol tcp -s 61.177.172.60/24 -j REJECT
+iptables -A INPUT --protocol udp -s 116.31.116.45/24 -j REJECT
+iptables -A INPUT --protocol tcp -s 116.31.116.45/24 -j REJECT
+
 # Logs the unknowns inputs
 iptables -A INPUT -j LOG --log-prefix='[netfilter] '
 
