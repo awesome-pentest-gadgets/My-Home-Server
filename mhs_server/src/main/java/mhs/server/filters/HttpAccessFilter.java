@@ -1,5 +1,5 @@
 /**
- * Copyright 2008-2016 VANPOPERYNGHE Stéphane
+ * Copyright 2008-2016 stefv
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at 
@@ -25,8 +25,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author svanp
- * @version $Id$
+ * A filter to limit the access to the HTML pages (with resources).
+ * 
+ * @author stefv
  */
 @WebFilter(filterName = "HttpAccessFilter", urlPatterns = { "/*" })
 public class HttpAccessFilter implements Filter {

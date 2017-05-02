@@ -1,7 +1,24 @@
+/**
+ * Copyright 2008-2016 stefv
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package mhs.server;
 
 import java.io.File;
 import java.net.URL;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.core.StandardContext;
@@ -12,6 +29,8 @@ import org.apache.tomcat.util.http.fileupload.FileUtils;
 
 /**
  * The server.
+ * 
+ * @author stefv
  */
 public class Server {
 
@@ -24,6 +43,11 @@ public class Server {
      * Port of the server.
      */
     private int port = PORT;
+
+    /**
+     * Log file.
+     */
+    private String logFile = null;
 
     /**
      * The main method of the server.
@@ -46,6 +70,9 @@ public class Server {
             if (arg.startsWith("--port=")) {
                 port = Integer.parseInt(arg.substring("--port=".length()).trim());
             }
+            if (arg.startsWith("--log=")) {
+                logFile = arg.substring("--log=".length()).trim();
+            }
         }
     }
 
@@ -57,8 +84,20 @@ public class Server {
      */
     private void startTomcat(final String[] args) throws Exception {
 
+        // Parse the arguments
         parseArguments(args);
 
+        // Prepare the logs
+        if (logFile != null) {
+            final Logger logger = Logger.getLogger("");
+            final Handler fileHandler = new FileHandler(logFile, true);
+            fileHandler.setFormatter(new SimpleFormatter());
+            fileHandler.setLevel(Level.INFO);
+            fileHandler.setEncoding("UTF-8");
+            logger.addHandler(fileHandler);
+        }
+
+        // Prepare the HTTP server
         final Tomcat tomcat = new Tomcat();
         final String webappDirLocation;
         final Class<?> serverClass = Server.class;
@@ -91,7 +130,8 @@ public class Server {
         // Create a compile directory
         compileDir.mkdir();
 
-        // If a previous webapps directory exist, remove it to have a clean install
+        // If a previous webapps directory exist, remove it to have a clean
+        // install
         final File webappsDir = new File(compileDir, "./webapps");
         if (webappsDir.exists()) {
             FileUtils.forceDelete(webappsDir);
