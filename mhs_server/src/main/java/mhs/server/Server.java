@@ -35,21 +35,6 @@ import org.apache.tomcat.util.http.fileupload.FileUtils;
 public class Server {
 
     /**
-     * Default port.
-     */
-    private static final int PORT = 8080;
-
-    /**
-     * Port of the server.
-     */
-    private int port = PORT;
-
-    /**
-     * Log file.
-     */
-    private String logFile = null;
-
-    /**
      * The main method of the server.
      * 
      * @param args Arguments.
@@ -61,22 +46,6 @@ public class Server {
     }
 
     /**
-     * Parse the arguments.
-     * 
-     * @param args The arguments.
-     */
-    private void parseArguments(final String[] args) {
-        for (String arg : args) {
-            if (arg.startsWith("--port=")) {
-                port = Integer.parseInt(arg.substring("--port=".length()).trim());
-            }
-            if (arg.startsWith("--log=")) {
-                logFile = arg.substring("--log=".length()).trim();
-            }
-        }
-    }
-
-    /**
      * Start the Tomcat server.
      * 
      * @param args Arguments.
@@ -84,13 +53,10 @@ public class Server {
      */
     private void startTomcat(final String[] args) throws Exception {
 
-        // Parse the arguments
-        parseArguments(args);
-
         // Prepare the logs
-        if (logFile != null) {
+        if (Settings.getServerLog() != null) {
             final Logger logger = Logger.getLogger("");
-            final Handler fileHandler = new FileHandler(logFile, true);
+            final Handler fileHandler = new FileHandler(Settings.getServerLog().getAbsolutePath(), true);
             fileHandler.setFormatter(new SimpleFormatter());
             fileHandler.setLevel(Level.INFO);
             fileHandler.setEncoding("UTF-8");
@@ -122,7 +88,7 @@ public class Server {
         }
 
         // Remove the compile directory
-        final File compileDir = new File("./tomcat." + port);
+        final File compileDir = new File("./tomcat." + Settings.getPort());
         if (compileDir.exists()) {
             FileUtils.forceDelete(compileDir);
         }
@@ -142,7 +108,7 @@ public class Server {
 
         // Start the server
         tomcat.setBaseDir("./");
-        tomcat.setPort(port);
+        tomcat.setPort(Settings.getPort());
         tomcat.start();
         tomcat.getServer().await();
     }

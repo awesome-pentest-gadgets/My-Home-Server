@@ -29,3 +29,4 @@ webapp-install/.springBeans
 **/target/*
 mhs_server/mhs.log.lck
 *.log
+*.lck
