@@ -13,7 +13,8 @@ if [ $status -ne 0 ]; then
 	echo Can''t create the webapp.
 	exit 1
 else
-	cp ../mhs_server/target/*.war ./
+	rm ./mhs/opt/mhs/*.war
+	cp ../mhs_server/target/*.war ./mhs/opt/mhs/
 fi
 
 # Create the package
