@@ -21,6 +21,8 @@ fi
 dpkg-deb --build mhs ${FILENAME}
 
 # Help message
+echo DONE !
+echo 
 echo To install: sudo dpkg -i ${FILENAME}
 
 exit 0
