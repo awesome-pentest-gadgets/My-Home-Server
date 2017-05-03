@@ -9,7 +9,7 @@ cd ../mhs_server/
 mvn clean install
 result=$?
 popd
-if [ $status -ne 0 ]; then
+if [ $result -ne 0 ]; then
 	echo Can''t create the webapp.
 	exit 1
 else
