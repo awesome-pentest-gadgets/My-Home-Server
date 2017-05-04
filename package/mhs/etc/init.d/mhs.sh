@@ -26,6 +26,10 @@ case "$1" in
             killall -q -9 $NAME || true
         ;;
 
+		status)
+            status_of_proc "$NAME" "$DAEMON" "system-wide $NAME" && exit 0 || exit $?
+            ;;
+		
 		*)
 			echo "Usage: /etc/init.d/$NAME {start|stop|force-stop|restart|reload|force-reload|status}"
             exit 1
