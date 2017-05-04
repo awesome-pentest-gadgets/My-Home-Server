@@ -3,7 +3,7 @@ Version: 0.0.1-alpha1
 Section: admin
 Priority: optional
 Architecture: armhf
-Depends: iptables (>= 1.4.21-2), oracle-java8-jdk (>=8u65), mysql-5.5 (>=5.5.54-0+deb8u1)
+Depends: iptables (>= 1.4.21-2), oracle-java8-jdk (>=8u65), mysql-server-5.5 (>=5.5.54-0+deb8u1)
 Suggests: mhs-doc
 Installed-Size: 0
 Maintainer: stefv <svanpo@gmail.com>
