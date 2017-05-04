@@ -1,7 +1,7 @@
 #!/bin/bash
-PID_FILE=/var/run/mhs.pid
-SERVER_LOG_FILE=/var/log/mhs-server.log
-ACCESS_LOG_FILE=/var/log/mhs-access.log
+PID_FILE=/opt/mhs/mhs.pid
+SERVER_LOG_FILE=/opt/mhs/logs/mhs-server.log
+ACCESS_LOG_FILE=/opt/mhs/logs/mhs-access.log
 PORT=5000
 
 # Tests if a PID file exists
@@ -11,6 +11,7 @@ if [ -f LOG_FILE ]; then
 fi
 
 # Start the server
-java -jar *.war -DserverLog=$SERVER_LOG_FILE -DaccessLog=$ACCESS_LOG_FILE -Dport=$PORT
+nohup java -DserverLog=$SERVER_LOG_FILE -DaccessLog=$ACCESS_LOG_FILE -Dport=$PORT -jar *.war &
+echo $! > PID_FILE
 
 exit 0

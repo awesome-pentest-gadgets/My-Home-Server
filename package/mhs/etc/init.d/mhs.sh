@@ -4,6 +4,18 @@ NAME=mhs
 DAEMON=/opt/mhs/mhsd.sh
 OPTIONS=
 
+start() {
+	log_daemon_msg "Starting system $NAME Daemon"
+	start-stop-daemon --background --name $NAME --start --quiet --chuid $USER --exec $DAEMON -- $OPTIONS
+	log_end_msg $?
+}
+
+stop() {
+	log_daemon_msg "Stopping system $NAME Daemon"
+    start-stop-daemon --name $NAME --stop --retry 5 --quiet --name $NAME
+	log_end_msg $?
+}
+
 case "$1" in
 
         start)
@@ -36,17 +48,5 @@ case "$1" in
         ;;
 				
 esac
-
-start() {
-	log_daemon_msg "Starting system $NAME Daemon"
-	start-stop-daemon --background --name $NAME --start --quiet --chuid $USER --exec $DAEMON -- $OPTIONS
-	log_end_msg $?
-}
-
-stop() {
-	log_daemon_msg "Stopping system $NAME Daemon"
-    start-stop-daemon --name $NAME --stop --retry 5 --quiet --name $NAME
-	log_end_msg $?
-}
 
 exit 0
