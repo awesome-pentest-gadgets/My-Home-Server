@@ -10,7 +10,7 @@ mvn clean install
 result=$?
 popd
 if [ $result -ne 0 ]; then
-	echo Can''t create the webapp.
+	echo "Can''t create the webapp."
 	exit 1
 else
 	rm ./mhs/opt/mhs/*.war
@@ -23,6 +23,7 @@ dpkg-deb --build mhs ${FILENAME}
 # Help message
 echo DONE !
 echo 
-echo To install: sudo dpkg -i ${FILENAME}
+echo "To install: sudo dpkg -i ${FILENAME}"
+echo "To fix dependencies: sudo apt-get -f update"
 
 exit 0
