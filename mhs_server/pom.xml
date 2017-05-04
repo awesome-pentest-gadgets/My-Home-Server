@@ -128,7 +128,7 @@
 								<move
 									todir="${project.build.directory}/${project.artifactId}-${project.version}/">
 									<fileset dir="${project.build.directory}/classes/">
-										<include name="mhs/server/Server.class" />
+										<include name="**/*.class" />
 									</fileset>
 								</move>
 							</tasks>
