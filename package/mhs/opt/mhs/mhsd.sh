@@ -10,7 +10,7 @@ if [ -f LOG_FILE ]; then
 		exit 1
 fi
 
-# Start the server
+# Starts the server
 nohup java -DserverLog=$SERVER_LOG_FILE -DaccessLog=$ACCESS_LOG_FILE -Dport=$PORT -jar *.war &
 echo $! > PID_FILE
 
