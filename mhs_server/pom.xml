@@ -17,6 +17,7 @@
 
 	<dependencies>
 
+		<!-- The servlet and JSP API -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -30,6 +31,7 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- The Tomcat server -->
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-catalina</artifactId>
@@ -65,6 +67,13 @@
 			<artifactId>ecj</artifactId>
 			<version>4.6.1</version>
 			<scope>provided</scope>
+		</dependency>
+
+		<!-- The database server -->
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>2.4.0</version>
 		</dependency>
 
 		<dependency>
@@ -125,8 +134,7 @@
 						<phase>prepare-package</phase>
 						<configuration>
 							<tasks>
-								<move
-									todir="${project.build.directory}/${project.artifactId}-${project.version}/">
+								<move todir="${project.build.directory}/${project.artifactId}-${project.version}/">
 									<fileset dir="${project.build.directory}/classes/">
 										<include name="**/*.class" />
 									</fileset>
@@ -152,7 +160,7 @@
 							<goal>unpack-dependencies</goal>
 						</goals>
 						<configuration>
-							<includeGroupIds>org.apache.tomcat.embed,org.apache.tomcat,javax.servlet,javax.servlet.jsp,org.eclipse.jdt.core.compiler</includeGroupIds>
+							<includeGroupIds>org.apache.tomcat.embed,org.apache.tomcat,javax.servlet,javax.servlet.jsp,org.eclipse.jdt.core.compiler,org.hsqldb</includeGroupIds>
 							<excludeArtifactIds>mhs_webapp</excludeArtifactIds>
 							<excludes>*.html,ecj.*,META-INF/LICENSE*,META-INF/services/*,META-INF/NOTICE,META-INF/*.xml,META-INF/eclipse*</excludes>
 							<outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}</outputDirectory>
