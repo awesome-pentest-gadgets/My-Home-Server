@@ -1,5 +1,5 @@
 /**
- * Copyright 2008-2016 VANPOPERYNGHE Stéphane
+ * Copyright 2008-2017 stefv
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at 
@@ -17,7 +17,7 @@ import java.io.File;
 /**
  * Settings class.
  * 
- * @author svanp
+ * @author stefv
  */
 public class Settings {
 
@@ -44,7 +44,7 @@ public class Settings {
     /**
      * Constructs the settings class.
      */
-    public Settings() {
+    private Settings() {
     }
 
     /**
