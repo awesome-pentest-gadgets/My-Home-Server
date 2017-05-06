@@ -32,14 +32,34 @@ public class Settings {
     private static final String SERVER_LOG_PARAM = "serverLog";
 
     /**
-     * Param for the port.
+     * Param for the directory of the database.
      */
-    private static final String PORT_PARAM = "port";
+    private static final String DB_DIRECTORY_PARAM = "dbDirectory";
 
     /**
-     * Default port.
+     * Param for the port for the HTTP server.
      */
-    private static final String DEFAULT_PORT = "8080";
+    private static final String HTTP_PORT_PARAM = "httpPort";
+
+    /**
+     * Param for the port for the DB server.
+     */
+    private static final String DB_PORT_PARAM = "dbPort";
+
+    /**
+     * Default HTTP port.
+     */
+    private static final String DEFAULT_HTTP_PORT = "5000";
+
+    /**
+     * Default DB port.
+     */
+    private static final String DEFAULT_DB_PORT = "9001";
+
+    /**
+     * Default DB directory.
+     */
+    private static final String DEFAULT_DB_DIRECTORY = "./db";
 
     /**
      * Constructs the settings class.
@@ -48,12 +68,30 @@ public class Settings {
     }
 
     /**
-     * Returns the port.
+     * Returns the HTTP port.
      * 
-     * @return the port.
+     * @return the HTTP port.
      */
-    public static int getPort() {
-        return Integer.parseInt(System.getProperty(PORT_PARAM, DEFAULT_PORT).trim());
+    public static int getHTTPPort() {
+        return Integer.parseInt(System.getProperty(HTTP_PORT_PARAM, DEFAULT_HTTP_PORT).trim());
+    }
+
+    /**
+     * Returns the DB port.
+     * 
+     * @return the DB port.
+     */
+    public static int getDBPort() {
+        return Integer.parseInt(System.getProperty(DB_PORT_PARAM, DEFAULT_DB_PORT).trim());
+    }
+
+    /**
+     * Returns the DB directory.
+     * 
+     * @return the DB directory.
+     */
+    public static String getDBDirectory() {
+        return System.getProperty(DB_DIRECTORY_PARAM, DEFAULT_DB_DIRECTORY).trim();
     }
 
     /**

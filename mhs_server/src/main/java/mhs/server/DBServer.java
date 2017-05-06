@@ -12,10 +12,20 @@
  */
 package mhs.server;
 
+import java.util.logging.Logger;
+
+import org.hsqldb.Server;
+import org.hsqldb.persist.HsqlProperties;
+
 /**
  * @author stefv
  */
 public class DBServer extends AbstractServer {
+
+    /**
+     * The logger.
+     */
+    private static final Logger LOG = Logger.getLogger(DBServer.class.getName());
 
     /*
      * (non-Javadoc)
@@ -23,7 +33,27 @@ public class DBServer extends AbstractServer {
      */
     @Override
     public void run() {
-        // TODO Auto-generated method stub
-        super.run();
+        startHSQLDB();
+    }
+
+    /**
+     * Start the HSQLDB server.
+     */
+    private void startHSQLDB() {
+
+        // Set the properties
+        final HsqlProperties props = new HsqlProperties();
+        props.setProperty("server.port", Settings.getDBPort());
+        props.setProperty("server.database.0", "file:" + Settings.getDBDirectory() + "/mhs;");
+        props.setProperty("server.dbname.0", "mhs");
+
+        // Start the server
+        try {
+            final Server hsqldb = new Server();
+            hsqldb.setProperties(props);
+            hsqldb.start();
+        } catch (Exception e) {
+            LOG.severe(e.getMessage());
+        }
     }
 }

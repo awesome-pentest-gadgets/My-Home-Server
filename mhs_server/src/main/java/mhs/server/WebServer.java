@@ -80,7 +80,7 @@ public class WebServer extends AbstractServer {
         }
 
         // Remove the compile directory
-        final File compileDir = new File("./tomcat." + Settings.getPort());
+        final File compileDir = new File("./tomcat." + Settings.getHTTPPort());
         if (compileDir.exists()) {
             FileUtils.forceDelete(compileDir);
         }
@@ -100,7 +100,7 @@ public class WebServer extends AbstractServer {
 
         // Start the server
         tomcat.setBaseDir("./");
-        tomcat.setPort(Settings.getPort());
+        tomcat.setPort(Settings.getHTTPPort());
         tomcat.start();
         tomcat.getServer().await();
     }

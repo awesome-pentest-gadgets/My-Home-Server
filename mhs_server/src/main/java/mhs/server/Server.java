@@ -62,8 +62,11 @@ public class Server {
             LOG.severe(e.getMessage());
         }
 
-        WebServer webServer = new WebServer();
+        final WebServer webServer = new WebServer();
         webServer.start();
+
+        final DBServer dbServer = new DBServer();
+        dbServer.start();
 
         LOG.info("Servers started.");
     }
