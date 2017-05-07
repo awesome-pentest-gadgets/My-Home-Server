@@ -32,3 +32,4 @@ mhs_server/mhs.log.lck
 *.lck
 mhs_server/db/mhs.properties
 mhs_server/db/mhs.script
+*.ldb
