@@ -24,6 +24,6 @@ dpkg-deb --build mhs ${FILENAME}
 echo DONE !
 echo 
 echo "To install: sudo dpkg -i ${FILENAME}"
-echo "To fix dependencies: sudo apt-get -f update"
+echo "To fix dependencies: sudo apt-get -f install"
 
 exit 0
