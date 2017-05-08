@@ -27,6 +27,11 @@ public class DBServer extends AbstractServer {
      */
     private static final Logger LOG = Logger.getLogger(DBServer.class.getName());
 
+    /**
+     * Encrypt key.
+     */
+    private static final String CRYPT_KEY = "604a6105889da65326bf35790a923932";
+
     /*
      * (non-Javadoc)
      * @see java.lang.Thread#run()
@@ -44,7 +49,8 @@ public class DBServer extends AbstractServer {
         // Set the properties
         final HsqlProperties props = new HsqlProperties();
         props.setProperty("server.port", Settings.getDBPort());
-        props.setProperty("server.database.0", "file:" + Settings.getDBDirectory() + "/mhs;");
+        props.setProperty("server.database.0",
+                "file:" + Settings.getDBDirectory() + "/mhs;crypt_key=" + CRYPT_KEY + ";crypt_type=blowfish");
         props.setProperty("server.dbname.0", "mhs");
 
         // Start the server
