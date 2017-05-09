@@ -1,4 +1,5 @@
-[{
+{
+"data" : [{
     "IsoAlpha3": "AFG",
     "TimeZones": ["Asia/Kabul"],
     "WindowsTimeZones": [{
@@ -1421,3 +1422,4 @@
     "CountryName": "Zimbabwe",
     "IsoAlpha2": "ZW"
 }]
+}
