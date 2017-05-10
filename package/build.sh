@@ -5,7 +5,7 @@ FILENAME=mhs-${VERSION}_${ARCH}.deb
 
 # Create the webapp
 pushd .
-cd ../mhs_server/
+cd ../mhs-server/
 mvn clean install
 result=$?
 popd
