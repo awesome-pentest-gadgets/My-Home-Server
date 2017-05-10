@@ -16,6 +16,12 @@
 	</properties>
 
 	<dependencies>
+	
+		<dependency>
+			<groupId>mhs</groupId>
+			<artifactId>mhs-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 		<!-- The servlet and JSP API -->
 		<dependency>
@@ -74,12 +80,14 @@
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 			<version>2.4.0</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.5</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -162,7 +170,27 @@
 						<configuration>
 							<includeGroupIds>org.apache.tomcat.embed,org.apache.tomcat,javax.servlet,javax.servlet.jsp,org.eclipse.jdt.core.compiler,org.hsqldb</includeGroupIds>
 							<excludeArtifactIds>mhs_webapp</excludeArtifactIds>
-							<excludes>*.html,ecj.*,META-INF/LICENSE*,META-INF/services/*,META-INF/NOTICE,META-INF/*.xml,META-INF/eclipse*</excludes>
+							<excludes>*.html,ecj.*,META-INF/LICENSE*,META-INF/services/*,META-INF/NOTICE,META-INF/*.xml,META-INF/*.txt,META-INF/eclipse*</excludes>
+							<outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>classpath</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>unpack-dependencies</goal>
+						</goals>
+						<configuration>
+							<includeGroupIds>mhs</includeGroupIds>
+							<includeArtifactIds>mhs-client</includeArtifactIds>
 							<outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}</outputDirectory>
 						</configuration>
 					</execution>
