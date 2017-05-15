@@ -38,3 +38,4 @@ node_modules/
 mhs-client/.angular-cli.json
 mhs-client/.editorconfig
 *.css
+mhs-client3/.externalToolBuilders/org.eclipse.jdt.core.javabuilder.launch
