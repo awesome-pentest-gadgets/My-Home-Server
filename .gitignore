@@ -37,3 +37,4 @@ mhs-server/db/mhs.script
 node_modules/
 mhs-client/.angular-cli.json
 mhs-client/.editorconfig
+*.css
