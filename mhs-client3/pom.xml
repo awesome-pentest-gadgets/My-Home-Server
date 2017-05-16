@@ -33,8 +33,6 @@
 				<artifactId>frontend-maven-plugin</artifactId>
 				<version>1.4</version>
 				<configuration>
-					<nodeVersion>v4.6.0</nodeVersion>
-					<npmVersion>2.15.9</npmVersion>
 					<installDirectory>target</installDirectory>
 					<outputdir>target/dist</outputdir>
 				</configuration>
@@ -45,18 +43,23 @@
 						<goals>
 							<goal>install-node-and-npm</goal>
 						</goals>
-						<phase>generate-resources</phase>
+						<phase>generate-sources</phase>
+						<configuration>
+							<nodeVersion>v4.6.0</nodeVersion>
+							<npmVersion>2.15.9</npmVersion>
+						</configuration>
 					</execution>
 
-<!-- 					<execution> -->
-<!-- 						<id>install less</id> -->
-<!-- 						<goals> -->
-<!-- 							<goal>less</goal> -->
-<!-- 						</goals> -->
-<!-- 						<configuration> -->
-<!-- 							<arguments>less</arguments> -->
-<!-- 						</configuration> -->
-<!-- 					</execution> -->
+					<execution>
+						<id>install less</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<phase>generate-sources</phase>
+						<configuration>
+							<arguments>install -g less</arguments>
+						</configuration>
+					</execution>
 
 				</executions>
 			</plugin>
