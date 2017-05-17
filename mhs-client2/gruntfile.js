@@ -5,12 +5,12 @@ module.exports = function(grunt) {
 		less : {
 			development : {
 				options : {
-					compress : true,
-					yuicompress : true,
+					compress : false,
+					yuicompress : false,
 					optimization : 2
 				},
 				files : {
-					"src/css/main.css" : "less/main.less" // destination file and source file
+					"src/assets/css/styles.css" : "less/*.less" // destination file and source file
 				}
 			}
 		}
