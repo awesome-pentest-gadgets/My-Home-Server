@@ -14,17 +14,17 @@ module.exports = function(grunt) {
 				}
 			}
 		}
-//		,watch : {
-//			styles : {
-//				files : [ 'less/**/*.less' ], // which files to watch
-//				tasks : [ 'less' ],
-//				options : {
-//					nospawn : true
-//				}
-//			}
-//		}
+		,watch : {
+			styles : {
+				files : [ 'less/**/*.less' ], // which files to watch
+				tasks : [ 'less' ],
+				options : {
+					nospawn : true
+				}
+			}
+		}
 	});
 
-//	grunt.registerTask('default', [ 'less', 'watch' ]);
-  grunt.registerTask('default', ['less']);
+	grunt.registerTask('default', [ 'less', 'watch' ]);
+//  grunt.registerTask('default', ['less']);
 };
