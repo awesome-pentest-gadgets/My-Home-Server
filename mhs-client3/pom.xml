@@ -14,17 +14,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-	<dependencies>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
-
-	</dependencies>
-
 	<build>
 		<plugins>
 
@@ -58,6 +47,27 @@
 						<phase>generate-sources</phase>
 						<configuration>
 							<arguments>install -g less</arguments>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>install grunt</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<phase>generate-sources</phase>
+						<configuration>
+							<arguments>install -g grunt grunt-cli</arguments>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>grunt build</id>
+						<goals>
+							<goal>grunt</goal>
+						</goals>
+						<configuration>
+							<arguments>--no-color</arguments>
 						</configuration>
 					</execution>
 
