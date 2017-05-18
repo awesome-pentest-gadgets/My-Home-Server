@@ -31,8 +31,15 @@
 }
 
 #mhs-infobar {
+	z-index: 1200;
+	top: 0;
 	height: 50px;
 	background-color: #455A64;
+	position: fixed;
+}
+
+#mhs-container {
+	z-index: 2000;
 }
 
 #mhs-footbar {
@@ -40,18 +47,31 @@
 	background-color: #455A64;
 }
 
+#mhs-sidebar p, #mhs-content p {
+	padding: 0;
+	margin: 0;
+	.clearfix();
+}
+
 #mhs-wrapper {
 	margin: 0;
 	padding: 0;
-	.clearfix ();
 }
 
 #mhs-sidebar {
 	float: left;
 	width: @sidebarWidth;
 	background-color: #37474F;
+	padding: 0;
+	margin: 0;
+	margin-right: 20px;
 }
 
 #mhs-content {
-	background-color: #EEEEEE;
+	margin-left: @sidebarWidth;
+	//background-color: #EEEEEE;
+	background-color: red;
+	padding: 0;
+	margin: 0;
 }
+
